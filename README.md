@@ -23,3 +23,19 @@ https://www.bulk.pics/resize
 6. If you want all files with different names to include a common word, you can add it in the Replace With section.
 7. Click Run Rename.
 
+## 🚀 Warning
+
+Since this tool modifies file names and performs batch file operations, your antivirus software may flag the executable version (`.exe`) as a potential threat.
+
+This is a **false positive** that can happen when the script is packaged (e.g. using PyInstaller), because it:
+- Bundles Python into a single executable
+- Extracts files temporarily at runtime
+- Performs bulk file operations (rename/copy)
+
+### 🟢 Safety Note
+This tool is safe to use if obtained from here.
+
+If your antivirus warns you:
+- You can add the executable in your excluded files on your antivirus
+- Or run the Python script directly instead of the executable
+
