@@ -1,8 +1,8 @@
 import os
 import shutil
 
-input_folder = r"C:\Users\Armado\Documents\Coding_Projects\myprojects\GTA5 tools\mass_file_rename_scipt\input"
-output_folder = r"C:\Users\Armado\Documents\Coding_Projects\myprojects\GTA5 tools\mass_file_rename_scipt\output"
+input_folder = r"folder_location\input"
+output_folder = r"folder_location\output"
 
 os.makedirs(output_folder, exist_ok=True)
 
