@@ -5,6 +5,12 @@ In cases where files all have different names but include a common pattern you w
 
 ---
 
+## 🖼️ Related Use Case
+This script is useful when working with large batches of images that need to be resized or processed.
+
+You can use tools like:
+https://www.bulk.pics/resize
+
 ## 🚀 Usage
 1. Set the **input folder path** in the script (this is where you will place the files to be renamed).
 2. Set the **output folder path** (this is where the renamed files will be saved).
