@@ -20,7 +20,6 @@ class RenameApp:
         self.input_open_btn = None
         self.output_open_btn = None
 
-        # ---------------- COLORS ----------------
         self.bg = "#0f1115"
         self.card = "#161a22"
         self.text = "#e6e6e6"
@@ -28,7 +27,6 @@ class RenameApp:
         self.accent = "#3b82f6"
         self.danger = "#ef4444"
 
-        # ---------------- HEADER ----------------
         header = tk.Label(
             root,
             text="Mass File Renamer",
@@ -38,11 +36,9 @@ class RenameApp:
         )
         header.pack(pady=12)
 
-        # ---------------- MAIN FRAME ----------------
         frame = tk.Frame(root, bg=self.bg)
         frame.pack(fill="both", expand=True, padx=15)
 
-        # ---------------- INPUT ROW ----------------
         tk.Label(frame, text="Input Folder", bg=self.bg, fg=self.muted).pack(anchor="w")
 
         input_row = tk.Frame(frame, bg=self.bg)
@@ -72,7 +68,6 @@ class RenameApp:
         self.input_label.pack(anchor="w", pady=(0, 8))
 
 
-        # ---------------- OUTPUT ROW ----------------
         tk.Label(frame, text="Output Folder", bg=self.bg, fg=self.muted).pack(anchor="w")
 
         output_row = tk.Frame(frame, bg=self.bg)
@@ -101,7 +96,6 @@ class RenameApp:
         self.output_label = tk.Label(frame, text="Not selected", bg=self.bg, fg=self.danger)
         self.output_label.pack(anchor="w", pady=(0, 8))
 
-        # ---------------- CARD: OPTIONS ----------------
         self.section_title(frame, "Rename Options")
 
         tk.Label(frame, text="Text to remove", bg=self.bg, fg=self.muted).pack(anchor="w")
@@ -110,10 +104,8 @@ class RenameApp:
         tk.Label(frame, text="Replace with (optional)", bg=self.bg, fg=self.muted).pack(anchor="w", pady=(8, 0))
         self.replace_entry = self.entry(frame)
 
-        # ---------------- RUN BUTTON ----------------
         self.btn("⚡ Run Rename", self.rename_files, frame, primary=True)
 
-        # ---------------- STATUS ----------------
         self.status = tk.Label(
             frame,
             text="Ready",
@@ -121,9 +113,7 @@ class RenameApp:
             fg=self.muted,
             font=("Segoe UI", 9)
         )
-        # Do NOT pack it here. It stays hidden until check_status() is called.
 
-        # ---------------- LOG ----------------
         tk.Label(frame, text="Debug Log", bg=self.bg, fg=self.text, font=("Segoe UI", 10, "bold")).pack(anchor="w")
 
         self.log_box = tk.Text(
@@ -136,7 +126,6 @@ class RenameApp:
         )
         self.log_box.pack(fill="both", expand=True, pady=5)
 
-    # ---------------- UI HELPERS ----------------
     def section_title(self, parent, text):
         tk.Label(parent, text=text, bg=self.bg, fg=self.text, font=("Segoe UI", 12, "bold")).pack(anchor="w", pady=(10, 5))
 
@@ -171,7 +160,6 @@ class RenameApp:
         )
         b.pack(fill="x", pady=4)
 
-    # ---------------- LOGGING ----------------
     def log(self, message):
         time = datetime.datetime.now().strftime("%H:%M:%S")
         line = f"[{time}] {message}\n"
@@ -179,7 +167,6 @@ class RenameApp:
         self.log_box.insert(tk.END, line)
         self.log_box.see(tk.END)
 
-    # ---------------- FOLDERS ----------------
 
     def select_input(self):
         folder = filedialog.askdirectory()
@@ -230,7 +217,7 @@ class RenameApp:
             self.input_label.config(text=folder, fg=self.accent)
             self.input_open_btn.config(state="normal")
             self.log(f"Input set to: {folder}")
-            self.check_status()  # Added this
+            self.check_status()
 
     def select_output(self):
         folder = filedialog.askdirectory()
@@ -239,14 +226,13 @@ class RenameApp:
             self.output_label.config(text=folder, fg=self.accent)
             self.output_open_btn.config(state="normal")
             self.log(f"Output set to: {folder}")
-            self.check_status()  # Added this
+            self.check_status()
 
     def check_status(self):
         """Shows the status label only when both folders are ready"""
         if self.input_folder and self.output_folder:
             self.status.pack(pady=5, before=self.log_box.master.winfo_children()[-2]) 
             self.status.config(text="Ready")
-    # ---------------- MAIN LOGIC ----------------
     def rename_files(self):
         try:
             if not self.input_folder or not self.output_folder:
@@ -295,7 +281,6 @@ class RenameApp:
             self.log(traceback.format_exc())
 
 
-# ---------------- RUN ----------------
 root = tk.Tk()
 app = RenameApp(root)
 root.mainloop()
