@@ -12,10 +12,14 @@ You can use tools like:
 https://www.bulk.pics/resize
 
 ## 🚀 Usage
-1. Set the **input folder path** in the script (this is where you will place the files to be renamed).
-2. Set the **output folder path** (this is where the renamed files will be saved).
-3. Place your files into the input folder.
-4. Run the script:
 
-```bash
-python rename.py
+1. Run the script
+```python rename.py```
+
+2. Place your files into the input folder.
+3. Set the input folder path in the script (this is where your files to be renamed are located).
+4. Set the output folder path in the script (this is where the renamed files will be saved).
+5. Define what you would like to remove from all files (e.g. -resized).
+6. If you want all files with different names to include a common word, you can add it in the Replace With section.
+7. Click Run Rename.
+
